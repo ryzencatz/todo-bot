@@ -43,7 +43,14 @@ module.exports = {
         const data = loadData();
 
         if (interaction.options.getSubcommand() === "add") {
-            return;
+            const listname = interaction.options.getString("list-name");
+            const content = interaction.options.getString("content");
+
+            data[listname].push({content, completed:false});
+
+            saveData(data);
+            
+            await interaction.reply(`added "${content}" to ${listname}`);
         } else if (interaction.options.getSubcommand() === "toggle-complete") {
             const index = interaction.options.getInteger("li-num") - 1;
             const listname = interaction.options.getString("list-name");
