@@ -49,7 +49,7 @@ module.exports = {
             data[listname].push({content, completed:false});
 
             saveData(data);
-            
+
             await interaction.reply(`added "${content}" to ${listname}`);
         } else if (interaction.options.getSubcommand() === "toggle-complete") {
             const index = interaction.options.getInteger("li-num") - 1;
@@ -62,7 +62,7 @@ module.exports = {
             }
 
             saveData(data);
-            await interaction.reply(`marked ${data[listname][index]["content"]} as ${data[listname][index]["completed"]}!`);
+            await interaction.reply(`marked ${data[listname][index]["content"]} as ${(data[listname][index]["completed"]) ? "complete" : "incomplete" }!`);
         }
     }
 };
