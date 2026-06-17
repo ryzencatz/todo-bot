@@ -19,7 +19,7 @@ module.exports = {
     async execute(interaction) {
         const data = loadData();
 
-        if (interaction.options.getSubcommand === "create") {
+        if (interaction.options.getSubcommand() === "create") {
             const listname = interaction.options.getString("list-name");
             data[listname] = [];
 

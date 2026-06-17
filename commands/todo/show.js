@@ -5,7 +5,7 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName("show")
         .setDescription("shows the list")
-        .addStringOption(option => option.setName("list-name").setDescription("the list you want to show")),
+        .addStringOption(option => option.setName("list-name").setDescription("the list you want to show").setRequired(true)),
     async execute(interaction) {
         const data = loadData();
 
