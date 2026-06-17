@@ -45,17 +45,17 @@ module.exports = {
         if (interaction.options.getSubcommand() === "add") {
             return;
         } else if (interaction.options.getSubcommand() === "toggle-complete") {
-            index = interaction.options.getInteger("li-num") - 1;
-            listname = interaction.options.getString("list-name");
+            const index = interaction.options.getInteger("li-num") - 1;
+            const listname = interaction.options.getString("list-name");
 
-            if (data[listname][index][completed] === false) {
-                data[listname][index][completed] === true;
-            } else if (data[listname][index][completed] === true) {
-                data[listname][index][completed] === false;
+            if (data[listname][index]["completed"] === false) {
+                data[listname][index]["completed"] = true;
+            } else if (data[listname][index]["completed"] === true) {
+                data[listname][index]["completed"] = false;
             }
 
             saveData(data);
-            await interaction.reply(`marked ${data[listname][index][content]} as ${data[listname][index][completed]}!`);
+            await interaction.reply(`marked ${data[listname][index]["content"]} as ${data[listname][index]["completed"]}!`);
         }
     }
 };
