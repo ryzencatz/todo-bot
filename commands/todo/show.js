@@ -10,19 +10,18 @@ module.exports = {
         const data = loadData();
 
         const list = interaction.options.getString("list-name");
-        let incomplete = ``;
-        let complete = ``;
+        let output = `\n**${list}**\n`; 
 
         data[list].forEach((item, index) => {
             if (item.completed) {
-                complete +=
+                output +=
                     `${index + 1}. ~~${item.content}~~\n`;
             } else {
-                incomplete +=
+                output +=
                     `${index + 1}. ${item.content}\n`;
             }
         });
-        
-        await interaction.reply(`\n**${list}**\n${complete}${incomplete}`);
+
+        await interaction.reply(`${output}\n`);
     }
 };
